@@ -104,6 +104,7 @@
             // 
             // txtSumilla
             // 
+            this.txtSumilla.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSumilla.Location = new System.Drawing.Point(219, 221);
             this.txtSumilla.Multiline = true;
             this.txtSumilla.Name = "txtSumilla";
@@ -156,7 +157,6 @@
             this.lblVerificarRegistro.Name = "lblVerificarRegistro";
             this.lblVerificarRegistro.Size = new System.Drawing.Size(198, 102);
             this.lblVerificarRegistro.TabIndex = 14;
-            this.lblVerificarRegistro.Text = "NUEVO LIBRO REGISTRADO";
             this.lblVerificarRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblInfoLibro
@@ -167,7 +167,6 @@
             this.lblInfoLibro.Name = "lblInfoLibro";
             this.lblInfoLibro.Size = new System.Drawing.Size(197, 164);
             this.lblInfoLibro.TabIndex = 15;
-            this.lblInfoLibro.Text = "El Libro X a sido registrado";
             this.lblInfoLibro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1

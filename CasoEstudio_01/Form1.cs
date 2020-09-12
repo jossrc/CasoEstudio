@@ -16,5 +16,20 @@ namespace CasoEstudio_01
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Libro book = new Libro();
+
+            book.Titulo = txtTitulo.Text;
+            book.Autor = txtAutor.Text;
+            book.AñoEdicion = Int32.Parse(txtAñoEdicion.Text);
+            book.Estado = txtEstado.Text;
+            book.Sumilla = txtSumilla.Text;
+
+
+            lblVerificarRegistro.Text = "Nuevo Libro Registrado !!";
+            lblInfoLibro.Text = "El libro \""+book.Titulo +"\" a sido añadido a la BD";
+        }
     }
 }
