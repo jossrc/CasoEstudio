@@ -33,14 +33,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.txtSumilla = new System.Windows.Forms.TextBox();
+            this.txtAñoEdicion = new System.Windows.Forms.TextBox();
+            this.txtAutor = new System.Windows.Forms.TextBox();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.btnRegistrarLibro = new System.Windows.Forms.Button();
+            this.lblVerificarRegistro = new System.Windows.Forms.Label();
+            this.lblInfoLibro = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -93,95 +93,96 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Estado";
             // 
-            // textBox4
+            // txtEstado
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(219, 175);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(268, 25);
-            this.textBox4.TabIndex = 8;
+            this.txtEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstado.Location = new System.Drawing.Point(219, 175);
+            this.txtEstado.Multiline = true;
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(268, 25);
+            this.txtEstado.TabIndex = 8;
             // 
-            // textBox5
+            // txtSumilla
             // 
-            this.textBox5.Location = new System.Drawing.Point(219, 221);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(268, 176);
-            this.textBox5.TabIndex = 9;
+            this.txtSumilla.Location = new System.Drawing.Point(219, 221);
+            this.txtSumilla.Multiline = true;
+            this.txtSumilla.Name = "txtSumilla";
+            this.txtSumilla.Size = new System.Drawing.Size(268, 176);
+            this.txtSumilla.TabIndex = 9;
             // 
-            // textBox1
+            // txtAñoEdicion
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(219, 125);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 25);
-            this.textBox1.TabIndex = 10;
+            this.txtAñoEdicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAñoEdicion.Location = new System.Drawing.Point(219, 125);
+            this.txtAñoEdicion.Multiline = true;
+            this.txtAñoEdicion.Name = "txtAñoEdicion";
+            this.txtAñoEdicion.Size = new System.Drawing.Size(268, 25);
+            this.txtAñoEdicion.TabIndex = 10;
             // 
-            // textBox2
+            // txtAutor
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(219, 77);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(268, 25);
-            this.textBox2.TabIndex = 11;
+            this.txtAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutor.Location = new System.Drawing.Point(219, 77);
+            this.txtAutor.Multiline = true;
+            this.txtAutor.Name = "txtAutor";
+            this.txtAutor.Size = new System.Drawing.Size(268, 25);
+            this.txtAutor.TabIndex = 11;
             // 
-            // textBox3
+            // txtTitulo
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(219, 24);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(268, 25);
-            this.textBox3.TabIndex = 12;
+            this.txtTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitulo.Location = new System.Drawing.Point(219, 24);
+            this.txtTitulo.Multiline = true;
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(268, 25);
+            this.txtTitulo.TabIndex = 12;
             // 
-            // button1
+            // btnRegistrarLibro
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(157, 436);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 41);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Registrar Libro";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRegistrarLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarLibro.Location = new System.Drawing.Point(157, 436);
+            this.btnRegistrarLibro.Name = "btnRegistrarLibro";
+            this.btnRegistrarLibro.Size = new System.Drawing.Size(204, 41);
+            this.btnRegistrarLibro.TabIndex = 13;
+            this.btnRegistrarLibro.Text = "Registrar Libro";
+            this.btnRegistrarLibro.UseVisualStyleBackColor = true;
+            this.btnRegistrarLibro.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label6
+            // lblVerificarRegistro
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(561, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 102);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "NUEVO LIBRO REGISTRADO";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVerificarRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVerificarRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerificarRegistro.Location = new System.Drawing.Point(561, 48);
+            this.lblVerificarRegistro.Name = "lblVerificarRegistro";
+            this.lblVerificarRegistro.Size = new System.Drawing.Size(198, 102);
+            this.lblVerificarRegistro.TabIndex = 14;
+            this.lblVerificarRegistro.Text = "NUEVO LIBRO REGISTRADO";
+            this.lblVerificarRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // lblInfoLibro
             // 
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(562, 219);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(197, 164);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "El Libro X a sido registrado";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblInfoLibro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblInfoLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoLibro.Location = new System.Drawing.Point(562, 219);
+            this.lblInfoLibro.Name = "lblInfoLibro";
+            this.lblInfoLibro.Size = new System.Drawing.Size(197, 164);
+            this.lblInfoLibro.TabIndex = 15;
+            this.lblInfoLibro.Text = "El Libro X a sido registrado";
+            this.lblInfoLibro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 524);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.lblInfoLibro);
+            this.Controls.Add(this.lblVerificarRegistro);
+            this.Controls.Add(this.btnRegistrarLibro);
+            this.Controls.Add(this.txtTitulo);
+            this.Controls.Add(this.txtAutor);
+            this.Controls.Add(this.txtAñoEdicion);
+            this.Controls.Add(this.txtSumilla);
+            this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -201,14 +202,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox txtSumilla;
+        private System.Windows.Forms.TextBox txtAñoEdicion;
+        private System.Windows.Forms.TextBox txtAutor;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.Button btnRegistrarLibro;
+        private System.Windows.Forms.Label lblVerificarRegistro;
+        private System.Windows.Forms.Label lblInfoLibro;
     }
 }
 
