@@ -39,8 +39,13 @@
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.btnRegistrarLibro = new System.Windows.Forms.Button();
-            this.lblVerificarRegistro = new System.Windows.Forms.Label();
-            this.lblInfoLibro = new System.Windows.Forms.Label();
+            this.dgLibro = new System.Windows.Forms.DataGridView();
+            this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLibro)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -141,7 +146,7 @@
             // btnRegistrarLibro
             // 
             this.btnRegistrarLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarLibro.Location = new System.Drawing.Point(157, 436);
+            this.btnRegistrarLibro.Location = new System.Drawing.Point(33, 441);
             this.btnRegistrarLibro.Name = "btnRegistrarLibro";
             this.btnRegistrarLibro.Size = new System.Drawing.Size(204, 41);
             this.btnRegistrarLibro.TabIndex = 13;
@@ -149,33 +154,61 @@
             this.btnRegistrarLibro.UseVisualStyleBackColor = true;
             this.btnRegistrarLibro.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblVerificarRegistro
+            // dgLibro
             // 
-            this.lblVerificarRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVerificarRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVerificarRegistro.Location = new System.Drawing.Point(561, 48);
-            this.lblVerificarRegistro.Name = "lblVerificarRegistro";
-            this.lblVerificarRegistro.Size = new System.Drawing.Size(198, 102);
-            this.lblVerificarRegistro.TabIndex = 14;
-            this.lblVerificarRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dgLibro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgLibro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTitulo,
+            this.colAutor,
+            this.colAño,
+            this.colEstado});
+            this.dgLibro.Location = new System.Drawing.Point(516, 24);
+            this.dgLibro.Name = "dgLibro";
+            this.dgLibro.Size = new System.Drawing.Size(563, 412);
+            this.dgLibro.TabIndex = 14;
+            this.dgLibro.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLibro_CellClick);
             // 
-            // lblInfoLibro
+            // colTitulo
             // 
-            this.lblInfoLibro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblInfoLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoLibro.Location = new System.Drawing.Point(562, 219);
-            this.lblInfoLibro.Name = "lblInfoLibro";
-            this.lblInfoLibro.Size = new System.Drawing.Size(197, 164);
-            this.lblInfoLibro.TabIndex = 15;
-            this.lblInfoLibro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.colTitulo.HeaderText = "Título";
+            this.colTitulo.Name = "colTitulo";
+            this.colTitulo.Width = 150;
+            // 
+            // colAutor
+            // 
+            this.colAutor.HeaderText = "Autor";
+            this.colAutor.Name = "colAutor";
+            this.colAutor.Width = 150;
+            // 
+            // colAño
+            // 
+            this.colAño.HeaderText = "Año de Edición";
+            this.colAño.Name = "colAño";
+            this.colAño.Width = 120;
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(283, 441);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(204, 41);
+            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.Text = "Eliminar Libro";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 524);
-            this.Controls.Add(this.lblInfoLibro);
-            this.Controls.Add(this.lblVerificarRegistro);
+            this.ClientSize = new System.Drawing.Size(1122, 524);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.dgLibro);
             this.Controls.Add(this.btnRegistrarLibro);
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtAutor);
@@ -189,6 +222,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Registro de Libros";
+            ((System.ComponentModel.ISupportInitialize)(this.dgLibro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,8 +241,12 @@
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.Button btnRegistrarLibro;
-        private System.Windows.Forms.Label lblVerificarRegistro;
-        private System.Windows.Forms.Label lblInfoLibro;
+        private System.Windows.Forms.DataGridView dgLibro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAño;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 
