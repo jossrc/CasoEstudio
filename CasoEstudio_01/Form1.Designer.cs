@@ -44,6 +44,7 @@
             this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgLibro)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,7 +146,7 @@
             // btnRegistrarLibro
             // 
             this.btnRegistrarLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarLibro.Location = new System.Drawing.Point(157, 436);
+            this.btnRegistrarLibro.Location = new System.Drawing.Point(33, 441);
             this.btnRegistrarLibro.Name = "btnRegistrarLibro";
             this.btnRegistrarLibro.Size = new System.Drawing.Size(204, 41);
             this.btnRegistrarLibro.TabIndex = 13;
@@ -190,11 +191,22 @@
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(283, 441);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(204, 41);
+            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.Text = "Eliminar Libro";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 524);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.dgLibro);
             this.Controls.Add(this.btnRegistrarLibro);
             this.Controls.Add(this.txtTitulo);
@@ -233,6 +245,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAño;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 
