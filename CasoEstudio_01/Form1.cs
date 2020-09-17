@@ -38,6 +38,14 @@ namespace CasoEstudio_01
             dgLibro.Rows[i].Cells[1].Value = txtAutor.Text;
             dgLibro.Rows[i].Cells[2].Value = txtAñoEdicion.Text;
             dgLibro.Rows[i].Cells[3].Value = txtEstado.Text;
+
+            txtTitulo.Clear();
+            txtAutor.Clear();
+            txtAñoEdicion.Clear();
+            txtEstado.Clear();
+            txtSumilla.Clear();
+
+            txtTitulo.Focus();
         }
 
         private void dgLibro_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -61,6 +69,14 @@ namespace CasoEstudio_01
             {
                 libros.Remove(libros.ElementAt(i));
                 dgLibro.Rows.RemoveAt(i);
+
+                txtTitulo.Clear();
+                txtAutor.Clear();
+                txtAñoEdicion.Clear();
+                txtEstado.Clear();
+                txtSumilla.Clear();
+
+                txtTitulo.Focus();
             } else
             {
                 MessageBox.Show("No existe/n libro/s para eliminar");
