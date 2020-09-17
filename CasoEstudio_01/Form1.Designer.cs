@@ -39,8 +39,12 @@
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.btnRegistrarLibro = new System.Windows.Forms.Button();
-            this.lblVerificarRegistro = new System.Windows.Forms.Label();
-            this.lblInfoLibro = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -149,33 +153,48 @@
             this.btnRegistrarLibro.UseVisualStyleBackColor = true;
             this.btnRegistrarLibro.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblVerificarRegistro
+            // dataGridView1
             // 
-            this.lblVerificarRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVerificarRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVerificarRegistro.Location = new System.Drawing.Point(561, 48);
-            this.lblVerificarRegistro.Name = "lblVerificarRegistro";
-            this.lblVerificarRegistro.Size = new System.Drawing.Size(198, 102);
-            this.lblVerificarRegistro.TabIndex = 14;
-            this.lblVerificarRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTitulo,
+            this.colAutor,
+            this.colAño,
+            this.colEstado});
+            this.dataGridView1.Location = new System.Drawing.Point(516, 24);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(563, 412);
+            this.dataGridView1.TabIndex = 14;
             // 
-            // lblInfoLibro
+            // colTitulo
             // 
-            this.lblInfoLibro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblInfoLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoLibro.Location = new System.Drawing.Point(562, 219);
-            this.lblInfoLibro.Name = "lblInfoLibro";
-            this.lblInfoLibro.Size = new System.Drawing.Size(197, 164);
-            this.lblInfoLibro.TabIndex = 15;
-            this.lblInfoLibro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.colTitulo.HeaderText = "Título";
+            this.colTitulo.Name = "colTitulo";
+            this.colTitulo.Width = 150;
+            // 
+            // colAutor
+            // 
+            this.colAutor.HeaderText = "Autor";
+            this.colAutor.Name = "colAutor";
+            this.colAutor.Width = 150;
+            // 
+            // colAño
+            // 
+            this.colAño.HeaderText = "Año de Edición";
+            this.colAño.Name = "colAño";
+            this.colAño.Width = 120;
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 524);
-            this.Controls.Add(this.lblInfoLibro);
-            this.Controls.Add(this.lblVerificarRegistro);
+            this.ClientSize = new System.Drawing.Size(1107, 524);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnRegistrarLibro);
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtAutor);
@@ -189,6 +208,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Registro de Libros";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,8 +227,11 @@
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.Button btnRegistrarLibro;
-        private System.Windows.Forms.Label lblVerificarRegistro;
-        private System.Windows.Forms.Label lblInfoLibro;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAño;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
     }
 }
 
