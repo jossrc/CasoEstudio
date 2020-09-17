@@ -165,6 +165,7 @@
             this.dgLibro.Name = "dgLibro";
             this.dgLibro.Size = new System.Drawing.Size(563, 412);
             this.dgLibro.TabIndex = 14;
+            this.dgLibro.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLibro_CellClick);
             // 
             // colTitulo
             // 
