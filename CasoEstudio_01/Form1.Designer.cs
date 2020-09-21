@@ -39,7 +39,7 @@
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.btnRegistrarLibro = new System.Windows.Forms.Button();
-            this.dgLibro = new System.Windows.Forms.DataGridView();
+            this.dgPublicaciones = new System.Windows.Forms.DataGridView();
             this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +47,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cboTipo = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLibro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPublicaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -156,19 +156,19 @@
             this.btnRegistrarLibro.UseVisualStyleBackColor = true;
             this.btnRegistrarLibro.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dgLibro
+            // dgPublicaciones
             // 
-            this.dgLibro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgLibro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgPublicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPublicaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTitulo,
             this.colAutor,
             this.colAño,
             this.colEstado});
-            this.dgLibro.Location = new System.Drawing.Point(516, 24);
-            this.dgLibro.Name = "dgLibro";
-            this.dgLibro.Size = new System.Drawing.Size(563, 412);
-            this.dgLibro.TabIndex = 14;
-            this.dgLibro.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLibro_CellClick);
+            this.dgPublicaciones.Location = new System.Drawing.Point(516, 24);
+            this.dgPublicaciones.Name = "dgPublicaciones";
+            this.dgPublicaciones.Size = new System.Drawing.Size(563, 412);
+            this.dgPublicaciones.TabIndex = 14;
+            this.dgPublicaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLibro_CellClick);
             // 
             // colTitulo
             // 
@@ -238,7 +238,7 @@
             this.Controls.Add(this.cboTipo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.dgLibro);
+            this.Controls.Add(this.dgPublicaciones);
             this.Controls.Add(this.btnRegistrarLibro);
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtAutor);
@@ -252,7 +252,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Registro de Libros";
-            ((System.ComponentModel.ISupportInitialize)(this.dgLibro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPublicaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +271,7 @@
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.Button btnRegistrarLibro;
-        private System.Windows.Forms.DataGridView dgLibro;
+        private System.Windows.Forms.DataGridView dgPublicaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAño;
