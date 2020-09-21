@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using CasoEstudio_01.Clases;
+
 namespace CasoEstudio_01
 {
     public partial class Form1 : Form
@@ -22,13 +24,14 @@ namespace CasoEstudio_01
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Libro book = new Libro();
+            string titulo = txtTitulo.Text;
+            string autor = txtAutor.Text;
+            int añoEdicion = int.Parse(txtAñoEdicion.Text);
+            string estado = txtEstado.Text;
+            string sumilla = txtSumilla.Text;
 
-            book.Titulo = txtTitulo.Text;
-            book.Autor = txtAutor.Text;
-            book.AñoEdicion = Int32.Parse(txtAñoEdicion.Text);
-            book.Estado = txtEstado.Text;
-            book.Sumilla = txtSumilla.Text;
+
+            Libro book = new Libro(titulo, autor, añoEdicion, estado, sumilla);
 
             libros.Add(book);
 
