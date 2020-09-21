@@ -78,11 +78,54 @@ namespace CasoEstudio_01
 
             if (i != -1 && i < (dgPublicaciones.Rows.Count - 1))
             {
-                txtAutor.Text = libros.ElementAt(i).Autor;
-                txtTitulo.Text = libros.ElementAt(i).Titulo;
-                txtAñoEdicion.Text = libros.ElementAt(i).AñoEdicion.ToString();
-                txtEstado.Text = libros.ElementAt(i).Estado;
-                txtSumilla.Text = libros.ElementAt(i).Sumilla;
+                if (publicaciones[i] is Libro)
+                {
+                    cboTipo.SelectedIndex = 0;
+                    Libro miLibro = (Libro) publicaciones[i];
+                    txtAutor.Text = miLibro.Autor;
+                    txtTitulo.Text = miLibro.Titulo;
+                    txtAñoEdicion.Text = miLibro.AñoEdicion.ToString();
+                    txtEstado.Text = miLibro.Estado;
+                    txtSumilla.Text = miLibro.Sumilla;
+                }
+
+                if (publicaciones[i] is Enciclopedia)
+                {
+                    cboTipo.SelectedIndex = 1;
+                    Enciclopedia miEnciclopedia = (Enciclopedia) publicaciones[i];
+                    txtAutor.Text = miEnciclopedia.Autor;
+                    txtTitulo.Text = miEnciclopedia.Titulo;
+                    txtAñoEdicion.Text = miEnciclopedia.AñoEdicion.ToString();
+                    txtEstado.Text = miEnciclopedia.Estado;
+                    txtSumilla.Text = miEnciclopedia.Descripcion;
+                }
+
+                if (publicaciones[i] is Revista)
+                {
+                    cboTipo.SelectedIndex = 2;
+                    Revista miRevista = (Revista)publicaciones[i];
+                    txtAutor.Text = miRevista.Autor;
+                    txtTitulo.Text = miRevista.Titulo;
+                    txtAñoEdicion.Text = miRevista.AñoEdicion.ToString();
+                    txtEstado.Text = miRevista.Estado;
+                }
+
+                if (publicaciones[i] is BestSeller)
+                {
+                    cboTipo.SelectedIndex = 3;
+                    BestSeller miBestSeller = (BestSeller) publicaciones[i];
+                    txtAutor.Text = miBestSeller.Autor;
+                    txtTitulo.Text = miBestSeller.Titulo;
+                    txtAñoEdicion.Text = miBestSeller.AñoEdicion.ToString();
+                    txtEstado.Text = miBestSeller.Estado;
+                    txtSumilla.Text = miBestSeller.Sumilla;
+                }
+
+                //txtAutor.Text = libros.ElementAt(i).Autor;
+                //txtTitulo.Text = libros.ElementAt(i).Titulo;
+                //txtAñoEdicion.Text = libros.ElementAt(i).AñoEdicion.ToString();
+                //txtEstado.Text = libros.ElementAt(i).Estado;
+                //txtSumilla.Text = libros.ElementAt(i).Sumilla;
             }            
 
         }
