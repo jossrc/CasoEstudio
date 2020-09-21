@@ -87,5 +87,34 @@ namespace CasoEstudio_01
 
             
         }
+
+        private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indice = cboTipo.SelectedIndex;
+
+            switch(indice)
+            {
+                case 0 :
+                    lblSumilla.Visible = true;
+                    txtSumilla.Visible = true;
+                    lblSumilla.Text = "Sumilla";
+                    break;
+                case 1:
+                    lblSumilla.Visible = true;
+                    txtSumilla.Visible = true;
+                    lblSumilla.Text = "Descripción";
+                    break;
+                case 2: 
+                    lblSumilla.Visible = false;
+                    txtSumilla.Visible = false;
+                    break;
+                case 3:
+                    lblSumilla.Visible = true;
+                    txtSumilla.Visible = true;
+                    lblSumilla.Text = "Sumilla";
+                    break;
+            }
+
+        }
     }
 }
