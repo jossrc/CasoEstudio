@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CasoEstudio_01.Properties
+namespace CasoEstudio.Properties
 {
 
 

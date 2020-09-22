@@ -1,4 +1,4 @@
-﻿namespace CasoEstudio_01
+﻿namespace CasoEstudio
 {
     partial class Form1
     {

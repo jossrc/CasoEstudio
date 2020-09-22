@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using CasoEstudio_01.Clases;
+using CasoEstudio.Clases;
 
-namespace CasoEstudio_01
+namespace CasoEstudio
 {
     public partial class Form1 : Form
     {
@@ -80,7 +80,7 @@ namespace CasoEstudio_01
                 if (publicaciones[i] is Libro)
                 {
                     cboTipo.SelectedIndex = 0;
-                    Libro miLibro = (Libro) publicaciones[i];
+                    Libro miLibro = (Libro)publicaciones[i];
                     txtAutor.Text = miLibro.Autor;
                     txtTitulo.Text = miLibro.Titulo;
                     txtAñoEdicion.Text = miLibro.AñoEdicion.ToString();
@@ -91,7 +91,7 @@ namespace CasoEstudio_01
                 if (publicaciones[i] is Enciclopedia)
                 {
                     cboTipo.SelectedIndex = 1;
-                    Enciclopedia miEnciclopedia = (Enciclopedia) publicaciones[i];
+                    Enciclopedia miEnciclopedia = (Enciclopedia)publicaciones[i];
                     txtAutor.Text = miEnciclopedia.Autor;
                     txtTitulo.Text = miEnciclopedia.Titulo;
                     txtAñoEdicion.Text = miEnciclopedia.AñoEdicion.ToString();
@@ -112,7 +112,7 @@ namespace CasoEstudio_01
                 if (publicaciones[i] is BestSeller)
                 {
                     cboTipo.SelectedIndex = 3;
-                    BestSeller miBestSeller = (BestSeller) publicaciones[i];
+                    BestSeller miBestSeller = (BestSeller)publicaciones[i];
                     txtAutor.Text = miBestSeller.Autor;
                     txtTitulo.Text = miBestSeller.Titulo;
                     txtAñoEdicion.Text = miBestSeller.AñoEdicion.ToString();
@@ -120,7 +120,7 @@ namespace CasoEstudio_01
                     txtSumilla.Text = miBestSeller.Sumilla;
                 }
 
-            }            
+            }
 
         }
 
@@ -139,7 +139,8 @@ namespace CasoEstudio_01
                 txtSumilla.Clear();
 
                 txtTitulo.Focus();
-            } else
+            }
+            else
             {
                 MessageBox.Show("No existe/n libro/s para eliminar");
             }
@@ -150,9 +151,9 @@ namespace CasoEstudio_01
             int indice = cboTipo.SelectedIndex;
             string tipo = cboTipo.SelectedItem.ToString();
 
-            switch(indice)
+            switch (indice)
             {
-                case 0 :
+                case 0:
                     lblSumilla.Visible = true;
                     txtSumilla.Visible = true;
                     lblSumilla.Text = "Sumilla";
@@ -164,7 +165,7 @@ namespace CasoEstudio_01
                     lblSumilla.Text = "Descripción";
                     btnRegistrarLibro.Text = "Registrar " + tipo;
                     break;
-                case 2: 
+                case 2:
                     lblSumilla.Visible = false;
                     txtSumilla.Visible = false;
                     btnRegistrarLibro.Text = "Registrar " + tipo;
