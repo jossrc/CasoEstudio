@@ -17,7 +17,6 @@ namespace CasoEstudio_01
     {
         private int i = 0;
         ArrayList publicaciones = new ArrayList();
-        List<Libro> libros = new List<Libro>();
 
         public Form1()
         {
@@ -121,20 +120,16 @@ namespace CasoEstudio_01
                     txtSumilla.Text = miBestSeller.Sumilla;
                 }
 
-                //txtAutor.Text = libros.ElementAt(i).Autor;
-                //txtTitulo.Text = libros.ElementAt(i).Titulo;
-                //txtAñoEdicion.Text = libros.ElementAt(i).AñoEdicion.ToString();
-                //txtEstado.Text = libros.ElementAt(i).Estado;
-                //txtSumilla.Text = libros.ElementAt(i).Sumilla;
             }            
 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (i != -1 && dgPublicaciones.Rows.Count > 0 && i < (dgPublicaciones.Rows.Count - 1))
+            if (i != -1 && dgPublicaciones.Rows.Count > 0 && i < (dgPublicaciones.Rows.Count - 1) && publicaciones.Count > 0)
             {
-                libros.Remove(libros.ElementAt(i));
+
+                publicaciones.RemoveAt(i);
                 dgPublicaciones.Rows.RemoveAt(i);
 
                 txtTitulo.Clear();

@@ -152,7 +152,7 @@
             this.btnRegistrarLibro.Name = "btnRegistrarLibro";
             this.btnRegistrarLibro.Size = new System.Drawing.Size(204, 41);
             this.btnRegistrarLibro.TabIndex = 13;
-            this.btnRegistrarLibro.Text = "Registrar Libro";
+            this.btnRegistrarLibro.Text = "Registrar";
             this.btnRegistrarLibro.UseVisualStyleBackColor = true;
             this.btnRegistrarLibro.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -251,7 +251,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Registro de Libros";
+            this.Text = "Control de Registros";
             ((System.ComponentModel.ISupportInitialize)(this.dgPublicaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
