@@ -38,7 +38,7 @@
             this.txtAñoEdicion = new System.Windows.Forms.TextBox();
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
-            this.btnRegistrarLibro = new System.Windows.Forms.Button();
+            this.btnRegistrar = new System.Windows.Forms.Button();
             this.dgPublicaciones = new System.Windows.Forms.DataGridView();
             this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -145,16 +145,16 @@
             this.txtTitulo.Size = new System.Drawing.Size(268, 25);
             this.txtTitulo.TabIndex = 12;
             // 
-            // btnRegistrarLibro
+            // btnRegistrar
             // 
-            this.btnRegistrarLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarLibro.Location = new System.Drawing.Point(33, 471);
-            this.btnRegistrarLibro.Name = "btnRegistrarLibro";
-            this.btnRegistrarLibro.Size = new System.Drawing.Size(204, 41);
-            this.btnRegistrarLibro.TabIndex = 13;
-            this.btnRegistrarLibro.Text = "Registrar";
-            this.btnRegistrarLibro.UseVisualStyleBackColor = true;
-            this.btnRegistrarLibro.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.Location = new System.Drawing.Point(33, 471);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(204, 41);
+            this.btnRegistrar.TabIndex = 13;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // dgPublicaciones
             // 
@@ -239,7 +239,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.dgPublicaciones);
-            this.Controls.Add(this.btnRegistrarLibro);
+            this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtAutor);
             this.Controls.Add(this.txtAñoEdicion);
@@ -270,7 +270,7 @@
         private System.Windows.Forms.TextBox txtAñoEdicion;
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.TextBox txtTitulo;
-        private System.Windows.Forms.Button btnRegistrarLibro;
+        private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.DataGridView dgPublicaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;

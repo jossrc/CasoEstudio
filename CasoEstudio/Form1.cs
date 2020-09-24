@@ -23,7 +23,7 @@ namespace CasoEstudio
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
             int indice = cboTipo.SelectedIndex;
             string titulo = txtTitulo.Text;
@@ -70,6 +70,7 @@ namespace CasoEstudio
 
             txtTitulo.Focus();
         }
+
 
         private void dgLibro_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -142,7 +143,7 @@ namespace CasoEstudio
             }
             else
             {
-                MessageBox.Show("No existe/n libro/s para eliminar");
+                MessageBox.Show("No existe/n Publicacion/es para eliminar");
             }
         }
 
@@ -157,27 +158,28 @@ namespace CasoEstudio
                     lblSumilla.Visible = true;
                     txtSumilla.Visible = true;
                     lblSumilla.Text = "Sumilla";
-                    btnRegistrarLibro.Text = "Registrar " + tipo;
+                    btnRegistrar.Text = "Registrar " + tipo;
                     break;
                 case 1:
                     lblSumilla.Visible = true;
                     txtSumilla.Visible = true;
                     lblSumilla.Text = "Descripción";
-                    btnRegistrarLibro.Text = "Registrar " + tipo;
+                    btnRegistrar.Text = "Registrar " + tipo;
                     break;
                 case 2:
                     lblSumilla.Visible = false;
                     txtSumilla.Visible = false;
-                    btnRegistrarLibro.Text = "Registrar " + tipo;
+                    btnRegistrar.Text = "Registrar " + tipo;
                     break;
                 case 3:
                     lblSumilla.Visible = true;
                     txtSumilla.Visible = true;
                     lblSumilla.Text = "Sumilla";
-                    btnRegistrarLibro.Text = "Registrar " + tipo;
+                    btnRegistrar.Text = "Registrar " + tipo;
                     break;
             }
 
         }
+
     }
 }
