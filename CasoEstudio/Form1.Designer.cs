@@ -168,7 +168,7 @@
             this.dgPublicaciones.Name = "dgPublicaciones";
             this.dgPublicaciones.Size = new System.Drawing.Size(563, 412);
             this.dgPublicaciones.TabIndex = 14;
-            this.dgPublicaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLibro_CellClick);
+            this.dgPublicaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPublicacion_CellClick);
             // 
             // colTitulo
             // 

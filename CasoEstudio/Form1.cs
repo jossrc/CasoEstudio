@@ -71,8 +71,7 @@ namespace CasoEstudio
             txtTitulo.Focus();
         }
 
-
-        private void dgLibro_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgPublicacion_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             i = e.RowIndex;
 
