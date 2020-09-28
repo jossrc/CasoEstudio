@@ -24,6 +24,17 @@ namespace CasoEstudio
             InitializeComponent();
         }
 
+        void Limpiar()
+        {
+            txtTitulo.Clear();
+            txtAutor.Clear();
+            txtAñoEdicion.Clear();
+            txtEstado.Clear();
+            txtSumilla.Clear();
+
+            txtTitulo.Focus();
+        }
+
         void mostrarInfoTextBox(int i)
         {
             if (i != -1 && i < (dgPublicaciones.Rows.Count))
@@ -117,13 +128,7 @@ namespace CasoEstudio
             dgPublicaciones.Rows[i].Cells[2].Value = txtAñoEdicion.Text;
             dgPublicaciones.Rows[i].Cells[3].Value = txtEstado.Text;
 
-            txtTitulo.Clear();
-            txtAutor.Clear();
-            txtAñoEdicion.Clear();
-            txtEstado.Clear();
-            txtSumilla.Clear();
-
-            txtTitulo.Focus();
+            Limpiar();
         }
 
         private void dgPublicacion_CellClick(object sender, DataGridViewCellEventArgs e)
