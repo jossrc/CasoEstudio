@@ -158,6 +158,7 @@
             // 
             // dgPublicaciones
             // 
+            this.dgPublicaciones.AllowUserToAddRows = false;
             this.dgPublicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPublicaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTitulo,
@@ -166,6 +167,8 @@
             this.colEstado});
             this.dgPublicaciones.Location = new System.Drawing.Point(516, 24);
             this.dgPublicaciones.Name = "dgPublicaciones";
+            this.dgPublicaciones.ReadOnly = true;
+            this.dgPublicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPublicaciones.Size = new System.Drawing.Size(563, 412);
             this.dgPublicaciones.TabIndex = 14;
             this.dgPublicaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPublicacion_CellClick);
@@ -174,24 +177,28 @@
             // 
             this.colTitulo.HeaderText = "Título";
             this.colTitulo.Name = "colTitulo";
+            this.colTitulo.ReadOnly = true;
             this.colTitulo.Width = 150;
             // 
             // colAutor
             // 
             this.colAutor.HeaderText = "Autor";
             this.colAutor.Name = "colAutor";
+            this.colAutor.ReadOnly = true;
             this.colAutor.Width = 150;
             // 
             // colAño
             // 
             this.colAño.HeaderText = "Año de Edición";
             this.colAño.Name = "colAño";
+            this.colAño.ReadOnly = true;
             this.colAño.Width = 120;
             // 
             // colEstado
             // 
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
+            this.colEstado.ReadOnly = true;
             // 
             // btnEliminar
             // 

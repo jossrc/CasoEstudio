@@ -75,7 +75,7 @@ namespace CasoEstudio
         {
             i = e.RowIndex;
 
-            if (i != -1 && i < (dgPublicaciones.Rows.Count - 1))
+            if (i != -1 && i < (dgPublicaciones.Rows.Count))
             {
                 if (publicaciones[i] is Libro)
                 {
@@ -126,7 +126,7 @@ namespace CasoEstudio
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (i != -1 && dgPublicaciones.Rows.Count > 0 && i < (dgPublicaciones.Rows.Count - 1) && publicaciones.Count > 0)
+            if (i != -1 && dgPublicaciones.Rows.Count > 0 && i < (dgPublicaciones.Rows.Count) && publicaciones.Count > 0)
             {
 
                 publicaciones.RemoveAt(i);
