@@ -16,11 +16,66 @@ namespace CasoEstudio
     public partial class Form1 : Form
     {
         private int i = 0;
-        ArrayList publicaciones = new ArrayList();
+        // ArrayList publicaciones = new ArrayList();
+        List<Publicacion> publicaciones = new List<Publicacion>();
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        void mostrarInfoTextBox(int i)
+        {
+            if (i != -1 && i < (dgPublicaciones.Rows.Count))
+            {
+                if (publicaciones[i] is Libro)
+                {
+                    cboTipo.SelectedIndex = 0;
+                    Libro miLibro = (Libro)publicaciones[i];
+                    txtAutor.Text = miLibro.Autor;
+                    txtTitulo.Text = miLibro.Titulo;
+                    txtAñoEdicion.Text = miLibro.AñoEdicion.ToString();
+                    txtEstado.Text = miLibro.Estado;
+                    txtSumilla.Text = miLibro.Sumilla;
+                    return;
+                }
+
+                if (publicaciones[i] is Enciclopedia)
+                {
+                    cboTipo.SelectedIndex = 1;
+                    Enciclopedia miEnciclopedia = (Enciclopedia)publicaciones[i];
+                    txtAutor.Text = miEnciclopedia.Autor;
+                    txtTitulo.Text = miEnciclopedia.Titulo;
+                    txtAñoEdicion.Text = miEnciclopedia.AñoEdicion.ToString();
+                    txtEstado.Text = miEnciclopedia.Estado;
+                    txtSumilla.Text = miEnciclopedia.Descripcion;
+                    return;
+                }
+
+                if (publicaciones[i] is Revista)
+                {
+                    cboTipo.SelectedIndex = 2;
+                    Revista miRevista = (Revista)publicaciones[i];
+                    txtAutor.Text = miRevista.Autor;
+                    txtTitulo.Text = miRevista.Titulo;
+                    txtAñoEdicion.Text = miRevista.AñoEdicion.ToString();
+                    txtEstado.Text = miRevista.Estado;
+                    return;
+                }
+
+                if (publicaciones[i] is BestSeller)
+                {
+                    cboTipo.SelectedIndex = 3;
+                    BestSeller miBestSeller = (BestSeller)publicaciones[i];
+                    txtAutor.Text = miBestSeller.Autor;
+                    txtTitulo.Text = miBestSeller.Titulo;
+                    txtAñoEdicion.Text = miBestSeller.AñoEdicion.ToString();
+                    txtEstado.Text = miBestSeller.Estado;
+                    txtSumilla.Text = miBestSeller.Sumilla;
+                    return;
+                }
+
+            }
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -75,52 +130,7 @@ namespace CasoEstudio
         {
             i = e.RowIndex;
 
-            if (i != -1 && i < (dgPublicaciones.Rows.Count))
-            {
-                if (publicaciones[i] is Libro)
-                {
-                    cboTipo.SelectedIndex = 0;
-                    Libro miLibro = (Libro)publicaciones[i];
-                    txtAutor.Text = miLibro.Autor;
-                    txtTitulo.Text = miLibro.Titulo;
-                    txtAñoEdicion.Text = miLibro.AñoEdicion.ToString();
-                    txtEstado.Text = miLibro.Estado;
-                    txtSumilla.Text = miLibro.Sumilla;
-                }
-
-                if (publicaciones[i] is Enciclopedia)
-                {
-                    cboTipo.SelectedIndex = 1;
-                    Enciclopedia miEnciclopedia = (Enciclopedia)publicaciones[i];
-                    txtAutor.Text = miEnciclopedia.Autor;
-                    txtTitulo.Text = miEnciclopedia.Titulo;
-                    txtAñoEdicion.Text = miEnciclopedia.AñoEdicion.ToString();
-                    txtEstado.Text = miEnciclopedia.Estado;
-                    txtSumilla.Text = miEnciclopedia.Descripcion;
-                }
-
-                if (publicaciones[i] is Revista)
-                {
-                    cboTipo.SelectedIndex = 2;
-                    Revista miRevista = (Revista)publicaciones[i];
-                    txtAutor.Text = miRevista.Autor;
-                    txtTitulo.Text = miRevista.Titulo;
-                    txtAñoEdicion.Text = miRevista.AñoEdicion.ToString();
-                    txtEstado.Text = miRevista.Estado;
-                }
-
-                if (publicaciones[i] is BestSeller)
-                {
-                    cboTipo.SelectedIndex = 3;
-                    BestSeller miBestSeller = (BestSeller)publicaciones[i];
-                    txtAutor.Text = miBestSeller.Autor;
-                    txtTitulo.Text = miBestSeller.Titulo;
-                    txtAñoEdicion.Text = miBestSeller.AñoEdicion.ToString();
-                    txtEstado.Text = miBestSeller.Estado;
-                    txtSumilla.Text = miBestSeller.Sumilla;
-                }
-
-            }
+            mostrarInfoTextBox(i);
 
         }
 
@@ -180,5 +190,28 @@ namespace CasoEstudio
 
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string titulo = txtTitulo.Text;            
+
+            if (titulo != null)
+            {
+                Publicacion miPublicacion = publicaciones.Find(publ => publ.Titulo == titulo);
+                int indice = publicaciones.IndexOf(miPublicacion);
+
+                if (indice == -1)
+                {
+                    MessageBox.Show("Oops no se encontró el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                mostrarInfoTextBox(indice);
+                return;
+            }
+
+            string autor = txtAutor.Text;
+            int añoEdicion = int.Parse(txtAñoEdicion.Text);
+            string estado = txtEstado.Text;
+
+        }
     }
 }
