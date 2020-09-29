@@ -53,6 +53,7 @@ namespace CasoEstudio
 
         void ListarPublicacionesExistentes(IEnumerable<Publicacion> publicaciones)
         {
+            dgPublicaciones.DataSource = null;
             dgPublicaciones.Rows.Clear();
             dgPublicaciones.Refresh();
             int i;
