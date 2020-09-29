@@ -259,7 +259,7 @@ namespace CasoEstudio
 
                           if (indiceEstado == -1)
                           {
-                             MessageBox.Show("Oops no se encontró el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                             MessageBox.Show("Oops no se encontró la Publicación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                              return;
                           }
                           mostrarInfoTextBox(indiceEstado);
@@ -269,6 +269,11 @@ namespace CasoEstudio
                 mostrarInfoTextBox(indiceAutor);   
              }
              mostrarInfoTextBox(indiceTitulo);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 }
