@@ -282,6 +282,7 @@
             this.btnVerTodos.TabIndex = 21;
             this.btnVerTodos.Text = "Ver Todos";
             this.btnVerTodos.UseVisualStyleBackColor = true;
+            this.btnVerTodos.Click += new System.EventHandler(this.btnVerTodos_Click);
             // 
             // btnLimpiar
             // 

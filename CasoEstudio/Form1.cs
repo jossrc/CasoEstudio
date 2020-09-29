@@ -315,5 +315,10 @@ namespace CasoEstudio
         {
             Limpiar();
         }
+
+        private void btnVerTodos_Click(object sender, EventArgs e)
+        {
+            ListarPublicacionesExistentes(publicaciones);
+        }
     }
 }
