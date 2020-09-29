@@ -75,6 +75,7 @@ namespace CasoEstudio
 
             if (indice != -1)
             {
+                i = 0;
                 IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.Titulo == titulo);
                 ListarPublicacionesExistentes(temporal);
             }
@@ -89,6 +90,7 @@ namespace CasoEstudio
 
             if (indice != -1)
             {
+                i = 0;
                 IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.Autor == autor);
                 ListarPublicacionesExistentes(temporal);
             }
@@ -103,6 +105,7 @@ namespace CasoEstudio
 
             if (indice != -1)
             {
+                i = 0;
                 IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.AñoEdicion == añoEdicion);
                 ListarPublicacionesExistentes(temporal);
             }
@@ -117,6 +120,7 @@ namespace CasoEstudio
 
             if (indice != -1)
             {
+                i = 0;
                 IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.Estado == estado);
                 ListarPublicacionesExistentes(temporal);
             }
@@ -222,37 +226,55 @@ namespace CasoEstudio
 
         private void dgPublicacion_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i = e.RowIndex;
+            i = e.RowIndex;
+            Console.WriteLine("===== Indice i : " + i + "======");
 
-            Console.WriteLine("Indice: " + i + "----------");
-            string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
-            Console.WriteLine("Autor: " + titulo);
-            string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
-            Console.WriteLine("Titulo: " + autor);
-            int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
-            Console.WriteLine("Año Edicion: " + añoEdicion);
+            string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();            
+            string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();            
+            int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());            
             string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
-            Console.WriteLine("Estado: " + estado);
+            
 
-            Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
-            Console.WriteLine("Publicacion: " + publicacion.ToString());
-            int indicePublicacion = publicaciones.IndexOf(publicacion);
-            Console.WriteLine("Indice Publicacion: " + indicePublicacion);
-            //int indicePublicacion = publicaciones.FindIndex(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
-
+            Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);            
+            int indicePublicacion = publicaciones.IndexOf(publicacion);       
+            
             mostrarInfoTextBox(indicePublicacion);
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (i != -1 && dgPublicaciones.Rows.Count > 0 && i < (dgPublicaciones.Rows.Count) && publicaciones.Count > 0)
-            {
+            int indicePublicacion;
 
-                publicaciones.RemoveAt(i);
+            if (i != -1 && dgPublicaciones.Rows.Count > 0 && publicaciones.Count > 0)
+            {
+                string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
+                string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
+                int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
+                string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+
+                Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                indicePublicacion = publicaciones.IndexOf(publicacion);
+
+                publicaciones.RemoveAt(indicePublicacion);
                 dgPublicaciones.Rows.RemoveAt(i);
 
                 Limpiar();
+
+                i--;
+
+                if ( i != -1)
+                {
+                    titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
+                    autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
+                    añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
+                    estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+
+                    publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                    indicePublicacion = publicaciones.IndexOf(publicacion);
+
+                    mostrarInfoTextBox(indicePublicacion);
+                }
+
             }
             else
             {
