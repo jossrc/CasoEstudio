@@ -37,7 +37,7 @@ namespace CasoEstudio
 
         int LeerAñoEdicion ()
         {
-            string añoString = txtAñoEdicion.Text;
+            string añoString = txtAñoEdicion.Text.Trim();
             string pattern = @"^\d{4}$";
 
             Regex miRegex = new Regex(pattern);
@@ -185,43 +185,50 @@ namespace CasoEstudio
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             int indice = cboTipo.SelectedIndex;
-            string titulo = txtTitulo.Text;
-            string autor = txtAutor.Text;
+            string titulo = txtTitulo.Text.Trim();
+            string autor = txtAutor.Text.Trim();
             int añoEdicion = LeerAñoEdicion();
-            string estado = txtEstado.Text;
-            string sumilla = txtSumilla.Text;
+            string estado = txtEstado.Text.Trim();
+            string sumilla = txtSumilla.Text.Trim();
 
-            switch (indice)
+            if (titulo != null && autor != null && añoEdicion != -1 && estado != null)
             {
-                case 0:
-                    Libro libro = new Libro(titulo, autor, añoEdicion, estado, sumilla);
-                    publicaciones.Add(libro);
-                    break;
-                case 1:
-                    Enciclopedia enciclopedia = new Enciclopedia(titulo, autor, añoEdicion, estado, sumilla);
-                    publicaciones.Add(enciclopedia);
-                    break;
-                case 2:
-                    Revista revista = new Revista(titulo, autor, añoEdicion, estado);
-                    publicaciones.Add(revista);
-                    break;
-                case 3:
-                    BestSeller bestSeller = new BestSeller(titulo, autor, añoEdicion, estado, sumilla);
-                    publicaciones.Add(bestSeller);
-                    break;
-                default:
-                    MessageBox.Show("Seleccione un tipo");
-                    return;
+                switch (indice)
+                {
+                    case 0:
+                        Libro libro = new Libro(titulo, autor, añoEdicion, estado, sumilla);
+                        publicaciones.Add(libro);
+                        break;
+                    case 1:
+                        Enciclopedia enciclopedia = new Enciclopedia(titulo, autor, añoEdicion, estado, sumilla);
+                        publicaciones.Add(enciclopedia);
+                        break;
+                    case 2:
+                        Revista revista = new Revista(titulo, autor, añoEdicion, estado);
+                        publicaciones.Add(revista);
+                        break;
+                    case 3:
+                        BestSeller bestSeller = new BestSeller(titulo, autor, añoEdicion, estado, sumilla);
+                        publicaciones.Add(bestSeller);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione un tipo");
+                        return;
+                }
+
+                i = dgPublicaciones.Rows.Add();
+
+                dgPublicaciones.Rows[i].Cells[0].Value = txtTitulo.Text;
+                dgPublicaciones.Rows[i].Cells[1].Value = txtAutor.Text;
+                dgPublicaciones.Rows[i].Cells[2].Value = txtAñoEdicion.Text;
+                dgPublicaciones.Rows[i].Cells[3].Value = txtEstado.Text;
+
+                Limpiar();
+            } else
+            {
+                MessageBox.Show("Los campos Titulo, Autor, Año de Publicación (4 dígitos) y Estado no pueden estar vacíos");
             }
 
-            i = dgPublicaciones.Rows.Add();
-
-            dgPublicaciones.Rows[i].Cells[0].Value = txtTitulo.Text;
-            dgPublicaciones.Rows[i].Cells[1].Value = txtAutor.Text;
-            dgPublicaciones.Rows[i].Cells[2].Value = txtAñoEdicion.Text;
-            dgPublicaciones.Rows[i].Cells[3].Value = txtEstado.Text;
-
-            Limpiar();
         }
 
         private void dgPublicacion_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -318,12 +325,12 @@ namespace CasoEstudio
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string titulo = txtTitulo.Text;            
+            string titulo = txtTitulo.Text.Trim();            
             int indiceTitulo = BuscarPorTitulo(titulo);
 
             if (indiceTitulo == -1)
             {
-                string autor = txtAutor.Text;                    
+                string autor = txtAutor.Text.Trim();                    
                 int indiceAutor = BuscarPorAutor(autor);
 
                 if (indiceAutor == -1)
@@ -333,7 +340,7 @@ namespace CasoEstudio
 
                       if (indiceAño == -1)
                       {
-                         string estado = txtEstado.Text;
+                         string estado = txtEstado.Text.Trim();
                          int indiceEstado = BuscarPorEstado(estado);
 
                           if (indiceEstado == -1)
