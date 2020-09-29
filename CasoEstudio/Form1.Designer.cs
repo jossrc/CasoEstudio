@@ -274,6 +274,7 @@
             this.btnFiltrarTipo.TabIndex = 20;
             this.btnFiltrarTipo.Text = "Filtrar por Tipo";
             this.btnFiltrarTipo.UseVisualStyleBackColor = true;
+            this.btnFiltrarTipo.Click += new System.EventHandler(this.btnFiltrarTipo_Click);
             // 
             // btnVerTodos
             // 

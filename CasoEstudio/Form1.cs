@@ -17,6 +17,7 @@ namespace CasoEstudio
     public partial class Form1 : Form
     {
         private int i = 0;
+        private bool filtrarTipo = false;
         List<Publicacion> publicaciones = new List<Publicacion>();
 
         public Form1()
@@ -202,6 +203,57 @@ namespace CasoEstudio
             }
         }
 
+        void RealizarFiltroXTipo(bool filtrarTipo)
+        {
+            if (filtrarTipo)
+            {
+                // Temporales
+                List<Libro> tipoLibro = new List<Libro>();
+                List<Enciclopedia> tipoEnciclopedia = new List<Enciclopedia>();
+                List<Revista> tipoRevista = new List<Revista>();
+                List<BestSeller> tipoBestSeller = new List<BestSeller>();
+
+                foreach (Publicacion publicacion in publicaciones)
+                {
+                    if (publicacion is Libro)
+                    {
+                        tipoLibro.Add((Libro)publicacion);
+                    }
+
+                    if (publicacion is Enciclopedia)
+                    {
+                        tipoEnciclopedia.Add((Enciclopedia)publicacion);
+                    }
+
+                    if (publicacion is Revista)
+                    {
+                        tipoRevista.Add((Revista)publicacion);
+                    }
+
+                    if (publicacion is BestSeller)
+                    {
+                        tipoBestSeller.Add((BestSeller)publicacion);
+                    }
+                }
+
+                switch (cboTipo.SelectedIndex)
+                {
+                    case 0:
+                        ListarPublicacionesExistentes(tipoLibro.AsEnumerable());
+                        break;
+                    case 1:
+                        ListarPublicacionesExistentes(tipoEnciclopedia.AsEnumerable());
+                        break;
+                    case 2:
+                        ListarPublicacionesExistentes(tipoRevista.AsEnumerable());
+                        break;
+                    case 3:
+                        ListarPublicacionesExistentes(tipoBestSeller.AsEnumerable());
+                        break;
+                }
+            }
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             int indice = cboTipo.SelectedIndex;
@@ -302,7 +354,7 @@ namespace CasoEstudio
         }
 
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {            
             int indice = cboTipo.SelectedIndex;
             string tipo = cboTipo.SelectedItem.ToString();
 
@@ -332,6 +384,8 @@ namespace CasoEstudio
                     btnRegistrar.Text = "Registrar " + tipo;
                     break;
             }
+
+            RealizarFiltroXTipo(filtrarTipo);
 
         }
 
@@ -452,6 +506,60 @@ namespace CasoEstudio
             Limpiar();
             i = -1;
             LimpiarTabla();
+        }
+
+        private void btnFiltrarTipo_Click(object sender, EventArgs e)
+        {
+
+            if (cboTipo.SelectedIndex != -1)
+            {
+                if (btnFiltrarTipo.ForeColor == DefaultForeColor)
+                {
+                    btnFiltrarTipo.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
+                    btnFiltrarTipo.Text = "Filtrar Por Tipo (Activado)";
+                    // Textbox
+                    txtTitulo.Enabled = false;
+                    txtAutor.Enabled = false;
+                    txtAñoEdicion.Enabled = false;
+                    txtEstado.Enabled = false;
+                    txtSumilla.Enabled = false;
+
+                    // Botones
+                    btnRegistrar.Enabled = false;
+                    btnLimpiar.Enabled = false;
+                    btnActualizar.Enabled = false;
+                    btnBuscar.Enabled = false;
+                    btnVerTodos.Enabled = false;
+
+                    filtrarTipo = true;
+                    RealizarFiltroXTipo(filtrarTipo);
+
+                }
+                else
+                {
+                    btnFiltrarTipo.ForeColor = DefaultForeColor;
+                    btnFiltrarTipo.Text = "Filtrar Por Tipo";
+                    // Textbox
+                    txtTitulo.Enabled = true;
+                    txtAutor.Enabled = true;
+                    txtAñoEdicion.Enabled = true;
+                    txtEstado.Enabled = true;
+                    txtSumilla.Enabled = true;
+
+                    // Botones
+                    btnRegistrar.Enabled = true;
+                    btnLimpiar.Enabled = true;
+                    btnActualizar.Enabled = true;
+                    btnBuscar.Enabled = true;
+                    btnVerTodos.Enabled = true;
+
+                    filtrarTipo = false;
+                }
+            } else
+            {
+                MessageBox.Show("Selecciona un tipo");
+            }
+ 
         }
     }
 }
