@@ -47,6 +47,12 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cboTipo = new System.Windows.Forms.ComboBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnFiltrarTipo = new System.Windows.Forms.Button();
+            this.btnVerTodos = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnLimpiarTodo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPublicaciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,6 +164,7 @@
             // 
             // dgPublicaciones
             // 
+            this.dgPublicaciones.AllowUserToAddRows = false;
             this.dgPublicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPublicaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTitulo,
@@ -166,6 +173,8 @@
             this.colEstado});
             this.dgPublicaciones.Location = new System.Drawing.Point(516, 24);
             this.dgPublicaciones.Name = "dgPublicaciones";
+            this.dgPublicaciones.ReadOnly = true;
+            this.dgPublicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPublicaciones.Size = new System.Drawing.Size(563, 412);
             this.dgPublicaciones.TabIndex = 14;
             this.dgPublicaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPublicacion_CellClick);
@@ -174,24 +183,28 @@
             // 
             this.colTitulo.HeaderText = "Título";
             this.colTitulo.Name = "colTitulo";
+            this.colTitulo.ReadOnly = true;
             this.colTitulo.Width = 150;
             // 
             // colAutor
             // 
             this.colAutor.HeaderText = "Autor";
             this.colAutor.Name = "colAutor";
+            this.colAutor.ReadOnly = true;
             this.colAutor.Width = 150;
             // 
             // colAño
             // 
             this.colAño.HeaderText = "Año de Edición";
             this.colAño.Name = "colAño";
+            this.colAño.ReadOnly = true;
             this.colAño.Width = 120;
             // 
             // colEstado
             // 
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
+            this.colEstado.ReadOnly = true;
             // 
             // btnEliminar
             // 
@@ -200,7 +213,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(204, 41);
             this.btnEliminar.TabIndex = 15;
-            this.btnEliminar.Text = "Eliminar Libro";
+            this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -230,11 +243,83 @@
             this.cboTipo.Text = "Seleccionar Tipo";
             this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Location = new System.Drawing.Point(33, 543);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(204, 41);
+            this.btnActualizar.TabIndex = 18;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(582, 543);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(204, 41);
+            this.btnBuscar.TabIndex = 19;
+            this.btnBuscar.Text = "Buscar y Filtrar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnFiltrarTipo
+            // 
+            this.btnFiltrarTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrarTipo.Location = new System.Drawing.Point(582, 471);
+            this.btnFiltrarTipo.Name = "btnFiltrarTipo";
+            this.btnFiltrarTipo.Size = new System.Drawing.Size(204, 41);
+            this.btnFiltrarTipo.TabIndex = 20;
+            this.btnFiltrarTipo.Text = "Filtrar por Tipo";
+            this.btnFiltrarTipo.UseVisualStyleBackColor = true;
+            this.btnFiltrarTipo.Click += new System.EventHandler(this.btnFiltrarTipo_Click);
+            // 
+            // btnVerTodos
+            // 
+            this.btnVerTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerTodos.Location = new System.Drawing.Point(847, 471);
+            this.btnVerTodos.Name = "btnVerTodos";
+            this.btnVerTodos.Size = new System.Drawing.Size(204, 41);
+            this.btnVerTodos.TabIndex = 21;
+            this.btnVerTodos.Text = "Ver Todos";
+            this.btnVerTodos.UseVisualStyleBackColor = true;
+            this.btnVerTodos.Click += new System.EventHandler(this.btnVerTodos_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(283, 543);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(204, 41);
+            this.btnLimpiar.TabIndex = 22;
+            this.btnLimpiar.Text = "Limpiar Cajas de Texto";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnLimpiarTodo
+            // 
+            this.btnLimpiarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarTodo.Location = new System.Drawing.Point(847, 543);
+            this.btnLimpiarTodo.Name = "btnLimpiarTodo";
+            this.btnLimpiarTodo.Size = new System.Drawing.Size(204, 41);
+            this.btnLimpiarTodo.TabIndex = 23;
+            this.btnLimpiarTodo.Text = "Limpiar Todo";
+            this.btnLimpiarTodo.UseVisualStyleBackColor = true;
+            this.btnLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 524);
+            this.ClientSize = new System.Drawing.Size(1122, 612);
+            this.Controls.Add(this.btnLimpiarTodo);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnVerTodos);
+            this.Controls.Add(this.btnFiltrarTipo);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.cboTipo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEliminar);
@@ -279,6 +364,12 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboTipo;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnFiltrarTipo;
+        private System.Windows.Forms.Button btnVerTodos;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnLimpiarTodo;
     }
 }
 
