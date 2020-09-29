@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +17,6 @@ namespace CasoEstudio
     public partial class Form1 : Form
     {
         private int i = 0;
-        // ArrayList publicaciones = new ArrayList();
         List<Publicacion> publicaciones = new List<Publicacion>();
 
         public Form1()
@@ -33,6 +33,54 @@ namespace CasoEstudio
             txtSumilla.Clear();
 
             txtTitulo.Focus();
+        }
+
+        int LeerAñoEdicion ()
+        {
+            string añoString = txtAñoEdicion.Text;
+            string pattern = @"^\d{4}$";
+
+            Regex miRegex = new Regex(pattern);
+            MatchCollection match = miRegex.Matches(añoString);
+
+            if (match.Count > 0)
+            {
+                return int.Parse(añoString);
+            }
+
+            return -1;
+        }
+
+        int BuscarPorTitulo(string titulo)
+        {
+            Publicacion miPublicacion = publicaciones.Find(publ => publ.Titulo == titulo);
+            int indice = publicaciones.IndexOf(miPublicacion);
+
+            return indice;
+        }
+
+        int BuscarPorAutor(string autor)
+        {
+            Publicacion miPublicacion = publicaciones.Find(publ => publ.Autor == autor);
+            int indice = publicaciones.IndexOf(miPublicacion);
+
+            return indice;
+        }
+
+        int BuscarPorAñoEdicion(int añoEdicion)
+        {
+            Publicacion miPublicacion = publicaciones.Find(publ => publ.AñoEdicion == añoEdicion);
+            int indice = publicaciones.IndexOf(miPublicacion);
+
+            return indice;
+        }
+
+        int BuscarPorEstado(string estado)
+        {
+            Publicacion miPublicacion = publicaciones.Find(publ => publ.Estado == estado);
+            int indice = publicaciones.IndexOf(miPublicacion);
+
+            return indice;
         }
 
         void mostrarInfoTextBox(int i)
@@ -94,7 +142,7 @@ namespace CasoEstudio
             int indice = cboTipo.SelectedIndex;
             string titulo = txtTitulo.Text;
             string autor = txtAutor.Text;
-            int añoEdicion = int.Parse(txtAñoEdicion.Text);
+            int añoEdicion = LeerAñoEdicion();
             string estado = txtEstado.Text;
             string sumilla = txtSumilla.Text;
 
@@ -147,13 +195,7 @@ namespace CasoEstudio
                 publicaciones.RemoveAt(i);
                 dgPublicaciones.Rows.RemoveAt(i);
 
-                txtTitulo.Clear();
-                txtAutor.Clear();
-                txtAñoEdicion.Clear();
-                txtEstado.Clear();
-                txtSumilla.Clear();
-
-                txtTitulo.Focus();
+                Limpiar();
             }
             else
             {
@@ -198,25 +240,35 @@ namespace CasoEstudio
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string titulo = txtTitulo.Text;            
+            int indiceTitulo = BuscarPorTitulo(titulo);
 
-            if (titulo != null)
+            if (indiceTitulo == -1)
             {
-                Publicacion miPublicacion = publicaciones.Find(publ => publ.Titulo == titulo);
-                int indice = publicaciones.IndexOf(miPublicacion);
+                string autor = txtAutor.Text;                    
+                int indiceAutor = BuscarPorAutor(autor);
 
-                if (indice == -1)
+                if (indiceAutor == -1)
                 {
-                    MessageBox.Show("Oops no se encontró el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   int añoEdicion = LeerAñoEdicion();
+                   int indiceAño = BuscarPorAñoEdicion(añoEdicion);
+
+                      if (indiceAño == -1)
+                      {
+                         string estado = txtEstado.Text;
+                         int indiceEstado = BuscarPorEstado(estado);
+
+                          if (indiceEstado == -1)
+                          {
+                             MessageBox.Show("Oops no se encontró el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                             return;
+                          }
+                          mostrarInfoTextBox(indiceEstado);
+                      }
+                      mostrarInfoTextBox(indiceAño);
                 }
-
-                mostrarInfoTextBox(indice);
-                return;
-            }
-
-            string autor = txtAutor.Text;
-            int añoEdicion = int.Parse(txtAñoEdicion.Text);
-            string estado = txtEstado.Text;
-
+                mostrarInfoTextBox(indiceAutor);   
+             }
+             mostrarInfoTextBox(indiceTitulo);
         }
     }
 }
