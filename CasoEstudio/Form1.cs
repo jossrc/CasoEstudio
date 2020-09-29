@@ -51,6 +51,14 @@ namespace CasoEstudio
             return -1;
         }
 
+        void ModificarFilaData(int indice, string titulo, string autor, int añoEdicion, string estado)
+        {
+            dgPublicaciones.Rows[indice].Cells[0].Value = titulo;
+            dgPublicaciones.Rows[indice].Cells[1].Value = autor;
+            dgPublicaciones.Rows[indice].Cells[2].Value = añoEdicion;
+            dgPublicaciones.Rows[indice].Cells[3].Value = estado;
+        }
+
         void ListarPublicacionesExistentes(IEnumerable<Publicacion> publicaciones)
         {
             dgPublicaciones.DataSource = null;
@@ -218,12 +226,10 @@ namespace CasoEstudio
 
                 i = dgPublicaciones.Rows.Add();
 
-                dgPublicaciones.Rows[i].Cells[0].Value = txtTitulo.Text;
-                dgPublicaciones.Rows[i].Cells[1].Value = txtAutor.Text;
-                dgPublicaciones.Rows[i].Cells[2].Value = txtAñoEdicion.Text;
-                dgPublicaciones.Rows[i].Cells[3].Value = txtEstado.Text;
+                ModificarFilaData(i, titulo, autor, añoEdicion, estado);
 
                 Limpiar();
+                i = -1;
             } else
             {
                 MessageBox.Show("Los campos Titulo, Autor, Año de Publicación (4 dígitos) y Estado no pueden estar vacíos");
@@ -236,16 +242,19 @@ namespace CasoEstudio
             i = e.RowIndex;
             Console.WriteLine("===== Indice i : " + i + "======");
 
-            string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();            
-            string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();            
-            int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());            
-            string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
-            
+            if (i != -1)
+            {
+                string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
+                string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
+                int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
+                string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
 
-            Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);            
-            int indicePublicacion = publicaciones.IndexOf(publicacion);       
-            
-            mostrarInfoTextBox(indicePublicacion);
+
+                Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                int indicePublicacion = publicaciones.IndexOf(publicacion);
+
+                mostrarInfoTextBox(indicePublicacion);
+            }            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -365,6 +374,76 @@ namespace CasoEstudio
         private void btnVerTodos_Click(object sender, EventArgs e)
         {
             ListarPublicacionesExistentes(publicaciones);
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            int indicePublicacion;
+
+            if (i != -1 && dgPublicaciones.Rows.Count > 0 && publicaciones.Count > 0)
+            {
+                string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
+                string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
+                int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
+                string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+
+                Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                indicePublicacion = publicaciones.IndexOf(publicacion);
+
+                //mostrarInfoTextBox(indicePublicacion);
+
+                int tipo = cboTipo.SelectedIndex;                
+
+                switch(tipo)
+                {
+                    case 0: 
+                        Libro libro = (Libro) publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);                        
+                        libro.Titulo = txtTitulo.Text.Trim();                        
+                        libro.Autor = txtAutor.Text.Trim();
+                        libro.AñoEdicion = LeerAñoEdicion();
+                        libro.Estado = txtEstado.Text.Trim();
+                        libro.Sumilla = txtSumilla.Text.Trim();
+                        ModificarFilaData(i, libro.Titulo, libro.Autor, libro.AñoEdicion, libro.Estado);                        
+                        break;
+                    case 1:
+                        Enciclopedia enciclopedia = (Enciclopedia)publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                        enciclopedia.Titulo = txtTitulo.Text.Trim();
+                        enciclopedia.Autor = txtAutor.Text.Trim();
+                        enciclopedia.AñoEdicion = LeerAñoEdicion();
+                        enciclopedia.Estado = txtEstado.Text.Trim();
+                        enciclopedia.Descripcion = txtSumilla.Text.Trim();
+                        ModificarFilaData(i, enciclopedia.Titulo, enciclopedia.Autor, enciclopedia.AñoEdicion, enciclopedia.Estado);
+                        break;
+                    case 2:
+                        Revista revista = (Revista) publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                        revista.Titulo = txtTitulo.Text.Trim();
+                        revista.Autor = txtAutor.Text.Trim();
+                        revista.AñoEdicion = LeerAñoEdicion();
+                        revista.Estado = txtEstado.Text.Trim();
+                        ModificarFilaData(i, revista.Titulo, revista.Autor, revista.AñoEdicion, revista.Estado);
+                        break;
+                    case 3:
+                        BestSeller bestSeller = (BestSeller)publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                        bestSeller.Titulo = txtTitulo.Text.Trim();
+                        bestSeller.Autor = txtAutor.Text.Trim();
+                        bestSeller.AñoEdicion = LeerAñoEdicion();
+                        bestSeller.Estado = txtEstado.Text.Trim();
+                        bestSeller.Sumilla = txtSumilla.Text.Trim();
+                        ModificarFilaData(i, bestSeller.Titulo, bestSeller.Autor, bestSeller.AñoEdicion, bestSeller.Estado);
+                        break;
+                    default:
+                        MessageBox.Show("Oops sucedió un problema");
+                        return;
+                }
+
+                i = -1;
+                Limpiar();
+                MessageBox.Show("Actualizado correctamente", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Busque y seleccione un registro para actualizar");
+            }
         }
     }
 }
