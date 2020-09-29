@@ -126,7 +126,7 @@ namespace CasoEstudio
 
         void mostrarInfoTextBox(int i)
         {
-            if (i != -1 && i < (dgPublicaciones.Rows.Count))
+            if (i != -1 && i < (publicaciones.Count))
             {
                 if (publicaciones[i] is Libro)
                 {
@@ -222,9 +222,25 @@ namespace CasoEstudio
 
         private void dgPublicacion_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            i = e.RowIndex;
+            int i = e.RowIndex;
 
-            mostrarInfoTextBox(i);
+            Console.WriteLine("Indice: " + i + "----------");
+            string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
+            Console.WriteLine("Autor: " + titulo);
+            string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
+            Console.WriteLine("Titulo: " + autor);
+            int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
+            Console.WriteLine("Año Edicion: " + añoEdicion);
+            string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+            Console.WriteLine("Estado: " + estado);
+
+            Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+            Console.WriteLine("Publicacion: " + publicacion.ToString());
+            int indicePublicacion = publicaciones.IndexOf(publicacion);
+            Console.WriteLine("Indice Publicacion: " + indicePublicacion);
+            //int indicePublicacion = publicaciones.FindIndex(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+
+            mostrarInfoTextBox(indicePublicacion);
 
         }
 
