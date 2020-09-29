@@ -59,6 +59,16 @@ namespace CasoEstudio
             dgPublicaciones.Rows[indice].Cells[3].Value = estado;
         }
 
+        (string, string, int, string) ObtenerValoresCeldas(int indice)
+        {
+            string titulo = dgPublicaciones.Rows[indice].Cells[0].Value.ToString();
+            string autor = dgPublicaciones.Rows[indice].Cells[1].Value.ToString();
+            int añoEdicion = int.Parse(dgPublicaciones.Rows[indice].Cells[2].Value.ToString());
+            string estado = dgPublicaciones.Rows[indice].Cells[3].Value.ToString();
+
+            return (titulo, autor, añoEdicion, estado);
+        }
+
         void ListarPublicacionesExistentes(IEnumerable<Publicacion> publicaciones)
         {
             dgPublicaciones.DataSource = null;
@@ -69,10 +79,7 @@ namespace CasoEstudio
             foreach(Publicacion publicacion in publicaciones)
             {
                 i = dgPublicaciones.Rows.Add();
-                dgPublicaciones.Rows[i].Cells[0].Value = publicacion.Titulo;
-                dgPublicaciones.Rows[i].Cells[1].Value = publicacion.Autor;
-                dgPublicaciones.Rows[i].Cells[2].Value = publicacion.AñoEdicion;
-                dgPublicaciones.Rows[i].Cells[3].Value = publicacion.Estado;                
+                ModificarFilaData(i, publicacion.Titulo, publicacion.Autor, publicacion.AñoEdicion, publicacion.Estado);         
             }
         }
 
@@ -244,11 +251,8 @@ namespace CasoEstudio
 
             if (i != -1)
             {
-                string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
-                string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
-                int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
-                string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
 
+                (string titulo, string autor, int añoEdicion, string estado) = ObtenerValoresCeldas(i);  
 
                 Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
                 int indicePublicacion = publicaciones.IndexOf(publicacion);
@@ -263,10 +267,7 @@ namespace CasoEstudio
 
             if (i != -1 && dgPublicaciones.Rows.Count > 0 && publicaciones.Count > 0)
             {
-                string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
-                string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
-                int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
-                string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+                (string titulo, string autor, int añoEdicion, string estado) = ObtenerValoresCeldas(i);
 
                 Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
                 indicePublicacion = publicaciones.IndexOf(publicacion);
@@ -280,10 +281,7 @@ namespace CasoEstudio
 
                 if ( i != -1)
                 {
-                    titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
-                    autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
-                    añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
-                    estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+                    (titulo, autor, añoEdicion, estado) = ObtenerValoresCeldas(i);
 
                     publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
                     indicePublicacion = publicaciones.IndexOf(publicacion);
@@ -382,10 +380,7 @@ namespace CasoEstudio
 
             if (i != -1 && dgPublicaciones.Rows.Count > 0 && publicaciones.Count > 0)
             {
-                string titulo = dgPublicaciones.Rows[i].Cells[0].Value.ToString();
-                string autor = dgPublicaciones.Rows[i].Cells[1].Value.ToString();
-                int añoEdicion = int.Parse(dgPublicaciones.Rows[i].Cells[2].Value.ToString());
-                string estado = dgPublicaciones.Rows[i].Cells[3].Value.ToString();
+                (string titulo, string autor, int añoEdicion, string estado) = ObtenerValoresCeldas(i);
 
                 Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
                 indicePublicacion = publicaciones.IndexOf(publicacion);
