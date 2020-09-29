@@ -69,11 +69,16 @@ namespace CasoEstudio
             return (titulo, autor, añoEdicion, estado);
         }
 
-        void ListarPublicacionesExistentes(IEnumerable<Publicacion> publicaciones)
+        void LimpiarTabla()
         {
             dgPublicaciones.DataSource = null;
             dgPublicaciones.Rows.Clear();
             dgPublicaciones.Refresh();
+        }
+
+        void ListarPublicacionesExistentes(IEnumerable<Publicacion> publicaciones)
+        {
+            LimpiarTabla();
             int i;
 
             foreach(Publicacion publicacion in publicaciones)
@@ -367,6 +372,7 @@ namespace CasoEstudio
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
+            i = -1;
         }
 
         private void btnVerTodos_Click(object sender, EventArgs e)
@@ -439,6 +445,13 @@ namespace CasoEstudio
             {
                 MessageBox.Show("Busque y seleccione un registro para actualizar");
             }
+        }
+
+        private void btnLimpiarTodo_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            i = -1;
+            LimpiarTabla();
         }
     }
 }

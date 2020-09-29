@@ -306,6 +306,7 @@
             this.btnLimpiarTodo.TabIndex = 23;
             this.btnLimpiarTodo.Text = "Limpiar Todo";
             this.btnLimpiarTodo.UseVisualStyleBackColor = true;
+            this.btnLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
             // 
             // Form1
             // 
