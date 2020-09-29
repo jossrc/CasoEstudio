@@ -51,10 +51,32 @@ namespace CasoEstudio
             return -1;
         }
 
+        void ListarPublicacionesExistentes(IEnumerable<Publicacion> publicaciones)
+        {
+            dgPublicaciones.Rows.Clear();
+            dgPublicaciones.Refresh();
+            int i;
+
+            foreach(Publicacion publicacion in publicaciones)
+            {
+                i = dgPublicaciones.Rows.Add();
+                dgPublicaciones.Rows[i].Cells[0].Value = publicacion.Titulo;
+                dgPublicaciones.Rows[i].Cells[1].Value = publicacion.Autor;
+                dgPublicaciones.Rows[i].Cells[2].Value = publicacion.AñoEdicion;
+                dgPublicaciones.Rows[i].Cells[3].Value = publicacion.Estado;                
+            }
+        }
+
         int BuscarPorTitulo(string titulo)
         {
             Publicacion miPublicacion = publicaciones.Find(publ => publ.Titulo == titulo);
             int indice = publicaciones.IndexOf(miPublicacion);
+
+            if (indice != -1)
+            {
+                IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.Titulo == titulo);
+                ListarPublicacionesExistentes(temporal);
+            }
 
             return indice;
         }
@@ -64,6 +86,12 @@ namespace CasoEstudio
             Publicacion miPublicacion = publicaciones.Find(publ => publ.Autor == autor);
             int indice = publicaciones.IndexOf(miPublicacion);
 
+            if (indice != -1)
+            {
+                IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.Autor == autor);
+                ListarPublicacionesExistentes(temporal);
+            }
+
             return indice;
         }
 
@@ -72,6 +100,12 @@ namespace CasoEstudio
             Publicacion miPublicacion = publicaciones.Find(publ => publ.AñoEdicion == añoEdicion);
             int indice = publicaciones.IndexOf(miPublicacion);
 
+            if (indice != -1)
+            {
+                IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.AñoEdicion == añoEdicion);
+                ListarPublicacionesExistentes(temporal);
+            }
+
             return indice;
         }
 
@@ -79,6 +113,12 @@ namespace CasoEstudio
         {
             Publicacion miPublicacion = publicaciones.Find(publ => publ.Estado == estado);
             int indice = publicaciones.IndexOf(miPublicacion);
+
+            if (indice != -1)
+            {
+                IEnumerable<Publicacion> temporal = publicaciones.Where(publ => publ.Estado == estado);
+                ListarPublicacionesExistentes(temporal);
+            }
 
             return indice;
         }
