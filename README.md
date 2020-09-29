@@ -15,4 +15,10 @@ escritorio.
 - 📚 Ahora que aprendí a registrar los libros desde una
 aplicación orientada a objetos, me gustaría registrar mis
 *enciclopedias*, *revistas* y *bestsellers*.
+
+#### Caso Propuesto 03:
+- 🔍 Ahora que aprendí a registrar cada libro desde una
+aplicación orientada a objetos, me gustaría que todos mis
+libros, en conjunto, pueda *registrarlos*, para así realizar
+*búsquedas* por **autor**, por **año de edición**, por tema, **etc**.
 - 🤔 ¿Cómo podría realizar dicho proceso?
