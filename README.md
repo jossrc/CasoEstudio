@@ -21,4 +21,11 @@ aplicación orientada a objetos, me gustaría registrar mis
 aplicación orientada a objetos, me gustaría que todos mis
 libros, en conjunto, pueda *registrarlos*, para así realizar
 *búsquedas* por **autor**, por **año de edición**, por tema, **etc**.
+
+#### Caso Propuesto 04:
+- 📄 Como me gusta leer libros y best sellers, me gustaría
+***hacer un resumen y elaborar una conclusión*** por cada
+libro que lea en un archivo, lo más pequeño posible y que
+no sea necesario manejar formato de texto como negrita,
+tamaño de letra,etc.
 - 🤔 ¿Cómo podría realizar dicho proceso?
