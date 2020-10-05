@@ -54,6 +54,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnLimpiarTodo = new System.Windows.Forms.Button();
             this.btnGuardarComo = new System.Windows.Forms.Button();
+            this.btnAbrir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPublicaciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -322,11 +323,23 @@
             this.btnGuardarComo.UseVisualStyleBackColor = true;
             this.btnGuardarComo.Click += new System.EventHandler(this.btnGuardarComo_Click);
             // 
+            // btnAbrir
+            // 
+            this.btnAbrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrir.Location = new System.Drawing.Point(1099, 127);
+            this.btnAbrir.Name = "btnAbrir";
+            this.btnAbrir.Size = new System.Drawing.Size(152, 41);
+            this.btnAbrir.TabIndex = 25;
+            this.btnAbrir.Text = "Abrir";
+            this.btnAbrir.UseVisualStyleBackColor = true;
+            this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 612);
+            this.Controls.Add(this.btnAbrir);
             this.Controls.Add(this.btnGuardarComo);
             this.Controls.Add(this.btnLimpiarTodo);
             this.Controls.Add(this.btnLimpiar);
@@ -385,6 +398,7 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnLimpiarTodo;
         private System.Windows.Forms.Button btnGuardarComo;
+        private System.Windows.Forms.Button btnAbrir;
     }
 }
 

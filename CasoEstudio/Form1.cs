@@ -628,5 +628,10 @@ namespace CasoEstudio
                 MessageBox.Show("Busque y seleccione un registro para guardar");
             }
         }
+
+        private void btnAbrir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
