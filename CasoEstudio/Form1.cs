@@ -629,9 +629,58 @@ namespace CasoEstudio
             }
         }
 
+        void mostrarnEnTextbox(string titulo, string autor, int añoEdicion, string estado, string sumilla = null){
+            txtTitulo.Text = titulo;
+            txtAutor.Text = autor;            
+            txtAñoEdicion.Text = añoEdicion.ToString();
+            txtEstado.Text = estado;
+            txtSumilla.Text = sumilla;
+        }
+
         private void btnAbrir_Click(object sender, EventArgs e)
         {
+            string data = "";
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Archivo de texto |*.txt";
 
+            if ( open.ShowDialog() == DialogResult.OK ) {
+                StreamReader lector = new StreamReader(open.FileName);
+                data += lector.ReadToEnd();
+                string[] datos = data.Split(';');
+
+                string tipo = datos[0].Split(':')[1].Trim();
+                string titulo = datos[1].Split(':')[1].Trim();
+                string autor = datos[2].Split(':')[1].Trim();
+                int añoEdicion = int.Parse(datos[3].Split(':')[1].Trim());
+                string estado = datos[4].Split(':')[1].Trim();
+
+                switch(tipo) {
+                    case "Libro":
+                        cboTipo.SelectedIndex = 0;
+                        string sumillaLib = datos[5].Split(':')[1].Trim();
+                        mostrarnEnTextbox(titulo, autor, añoEdicion, estado, sumillaLib);
+                        break;
+                    case "Enciclopedia":
+                        cboTipo.SelectedIndex = 1;
+                        string descripcion = datos[5].Split(':')[1].Trim();
+                        mostrarnEnTextbox(titulo, autor, añoEdicion, estado, descripcion);                        
+                        break;
+                    case "Revista":
+                        cboTipo.SelectedIndex = 2;
+                        mostrarnEnTextbox(titulo, autor, añoEdicion, estado);
+                        break;
+                    case "BestSeller":
+                        cboTipo.SelectedIndex = 3;
+                        string sumillaBest = datos[5].Split(':')[1].Trim();
+                        mostrarnEnTextbox(titulo, autor, añoEdicion, estado, sumillaBest);                        
+                        break;
+                    default:
+                        break;
+                }
+                
+                lector.Close();
+
+            }
         }
     }
 }
