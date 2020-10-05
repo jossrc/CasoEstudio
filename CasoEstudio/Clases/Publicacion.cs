@@ -25,5 +25,13 @@ namespace CasoEstudio.Clases
         public string Autor { get => autor; set => autor = value; }
         public int AñoEdicion { get => añoEdicion; set => añoEdicion = value; }
         public string Estado { get => estado; set => estado = value; }
+
+        public virtual String obtenerInfo(string tipo) {
+            return "Tipo:" + tipo + ";\n" +
+                   "Titulo: " + titulo +";\n" +
+                   "Autor: " + autor + ";\n" +
+                   "Año de Edición: " + añoEdicion + ";\n" +
+                   "Estado: " + estado;
+        }
     }
 }

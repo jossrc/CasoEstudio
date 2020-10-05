@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using CasoEstudio.Clases;
 
@@ -149,6 +150,15 @@ namespace CasoEstudio
             return indice;
         }
 
+        void mostrarnEnTextbox(string titulo, string autor, int añoEdicion, string estado, string sumilla = null)
+        {
+            txtTitulo.Text = titulo;
+            txtAutor.Text = autor;
+            txtAñoEdicion.Text = añoEdicion.ToString();
+            txtEstado.Text = estado;
+            txtSumilla.Text = sumilla;
+        }
+
         void mostrarInfoTextBox(int i)
         {
             if (i != -1 && i < (publicaciones.Count))
@@ -157,11 +167,7 @@ namespace CasoEstudio
                 {
                     cboTipo.SelectedIndex = 0;
                     Libro miLibro = (Libro)publicaciones[i];
-                    txtAutor.Text = miLibro.Autor;
-                    txtTitulo.Text = miLibro.Titulo;
-                    txtAñoEdicion.Text = miLibro.AñoEdicion.ToString();
-                    txtEstado.Text = miLibro.Estado;
-                    txtSumilla.Text = miLibro.Sumilla;
+                    mostrarnEnTextbox(miLibro.Titulo, miLibro.Autor, miLibro.AñoEdicion, miLibro.Estado, miLibro.Sumilla);                    
                     return;
                 }
 
@@ -169,11 +175,7 @@ namespace CasoEstudio
                 {
                     cboTipo.SelectedIndex = 1;
                     Enciclopedia miEnciclopedia = (Enciclopedia)publicaciones[i];
-                    txtAutor.Text = miEnciclopedia.Autor;
-                    txtTitulo.Text = miEnciclopedia.Titulo;
-                    txtAñoEdicion.Text = miEnciclopedia.AñoEdicion.ToString();
-                    txtEstado.Text = miEnciclopedia.Estado;
-                    txtSumilla.Text = miEnciclopedia.Descripcion;
+                    mostrarnEnTextbox(miEnciclopedia.Titulo, miEnciclopedia.Autor, miEnciclopedia.AñoEdicion, miEnciclopedia.Estado, miEnciclopedia.Descripcion);                    
                     return;
                 }
 
@@ -181,10 +183,7 @@ namespace CasoEstudio
                 {
                     cboTipo.SelectedIndex = 2;
                     Revista miRevista = (Revista)publicaciones[i];
-                    txtAutor.Text = miRevista.Autor;
-                    txtTitulo.Text = miRevista.Titulo;
-                    txtAñoEdicion.Text = miRevista.AñoEdicion.ToString();
-                    txtEstado.Text = miRevista.Estado;
+                    mostrarnEnTextbox(miRevista.Titulo, miRevista.Autor, miRevista.AñoEdicion, miRevista.Estado);                    
                     return;
                 }
 
@@ -192,11 +191,7 @@ namespace CasoEstudio
                 {
                     cboTipo.SelectedIndex = 3;
                     BestSeller miBestSeller = (BestSeller)publicaciones[i];
-                    txtAutor.Text = miBestSeller.Autor;
-                    txtTitulo.Text = miBestSeller.Titulo;
-                    txtAñoEdicion.Text = miBestSeller.AñoEdicion.ToString();
-                    txtEstado.Text = miBestSeller.Estado;
-                    txtSumilla.Text = miBestSeller.Sumilla;
+                    mostrarnEnTextbox(miBestSeller.Titulo, miBestSeller.Autor, miBestSeller.AñoEdicion, miBestSeller.Estado, miBestSeller.Sumilla);                    
                     return;
                 }
 
@@ -252,6 +247,22 @@ namespace CasoEstudio
                         break;
                 }
             }
+        }
+
+        void guardarComo(String text) {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Archivo de texto |*.txt";
+
+            if (save.ShowDialog() == DialogResult.OK) {
+                String ruta = save.FileName;
+                FileStream archivo = new FileStream(ruta, FileMode.Create);
+                StreamWriter escritor = new StreamWriter(archivo);
+                escritor.Write(text);
+
+                escritor.Close();
+                archivo.Close();
+            }
+
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -445,8 +456,6 @@ namespace CasoEstudio
                 Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
                 indicePublicacion = publicaciones.IndexOf(publicacion);
 
-                //mostrarInfoTextBox(indicePublicacion);
-
                 int tipo = cboTipo.SelectedIndex;                
 
                 switch(tipo)
@@ -560,6 +569,110 @@ namespace CasoEstudio
                 MessageBox.Show("Selecciona un tipo");
             }
  
+        }
+
+        private void btnGuardarComo_Click(object sender, EventArgs e)
+        {
+            int indicePublicacion;
+
+            if (i != -1 && dgPublicaciones.Rows.Count > 0 && publicaciones.Count > 0)
+            {
+                (string titulo, string autor, int añoEdicion, string estado) = ObtenerValoresCeldas(i);
+
+                Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                indicePublicacion = publicaciones.IndexOf(publicacion);
+
+                int tipo = cboTipo.SelectedIndex;
+
+                switch (tipo)
+                {
+                    case 0:
+                        Libro libro = (Libro) publicacion;
+                        string infoLibro = libro.obtenerInfo("Libro");
+                        guardarComo(infoLibro);
+                        break;
+                    case 1:
+                        Enciclopedia enciclopedia = (Enciclopedia) publicacion;
+                        string infoEnci = enciclopedia.obtenerInfo("Enciclopedia");
+                        guardarComo(infoEnci);
+                        break;
+                    case 2:
+                        Revista revista = (Revista) publicacion;
+                        string infoRev = revista.obtenerInfo("Revista");
+                        guardarComo(infoRev);
+                        break;
+                    case 3:
+                        BestSeller bestSeller = (BestSeller) publicacion;
+                        string infoBest = publicacion.obtenerInfo("BestSeller");
+                        guardarComo(infoBest);
+                        break;
+                    default:
+                        MessageBox.Show("Oops sucedió un problema");
+                        return;
+                }
+
+                i = -1;
+                Limpiar();
+                MessageBox.Show("Guardado correctamente", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Busque y seleccione un registro para guardar");
+            }
+        }
+
+        private void btnAbrir_Click(object sender, EventArgs e)
+        {
+            string data = "";
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Archivo de texto |*.txt";
+
+            if ( open.ShowDialog() == DialogResult.OK ) {
+                StreamReader lector = new StreamReader(open.FileName);
+                data += lector.ReadToEnd();
+                string[] datos = data.Split(';');
+
+                if (datos != null && datos.Length >= 4 )
+                {
+                    string tipo = datos[0].Split(':')[1].Trim();
+                    string titulo = datos[1].Split(':')[1].Trim();
+                    string autor = datos[2].Split(':')[1].Trim();
+                    int añoEdicion = int.Parse(datos[3].Split(':')[1].Trim());
+                    string estado = datos[4].Split(':')[1].Trim();
+
+                    switch (tipo)
+                    {
+                        case "Libro":
+                            cboTipo.SelectedIndex = 0;
+                            string sumillaLib = datos[5].Split(':')[1].Trim();
+                            mostrarnEnTextbox(titulo, autor, añoEdicion, estado, sumillaLib);
+                            break;
+                        case "Enciclopedia":
+                            cboTipo.SelectedIndex = 1;
+                            string descripcion = datos[5].Split(':')[1].Trim();
+                            mostrarnEnTextbox(titulo, autor, añoEdicion, estado, descripcion);
+                            break;
+                        case "Revista":
+                            cboTipo.SelectedIndex = 2;
+                            mostrarnEnTextbox(titulo, autor, añoEdicion, estado);
+                            break;
+                        case "BestSeller":
+                            cboTipo.SelectedIndex = 3;
+                            string sumillaBest = datos[5].Split(':')[1].Trim();
+                            mostrarnEnTextbox(titulo, autor, añoEdicion, estado, sumillaBest);
+                            break;
+                        default:
+                            MessageBox.Show("Oops sucedió un problema");
+                            break;
+                    }
+                } else
+                {
+                    MessageBox.Show("Seleccione un archivo válido");
+                }     
+              
+                lector.Close();
+
+            }
         }
     }
 }
