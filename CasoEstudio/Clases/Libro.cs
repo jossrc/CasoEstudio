@@ -17,5 +17,12 @@ namespace CasoEstudio.Clases
         }
 
         public string Sumilla { get => sumilla; set => sumilla = value; }
+
+        public override string obtenerInfo(string tipo)
+        {
+            return base.obtenerInfo(tipo) + ";\n" +
+                   "Sumilla: " + sumilla;
+        }
+
     }
 }

@@ -320,6 +320,7 @@
             this.btnGuardarComo.TabIndex = 24;
             this.btnGuardarComo.Text = "Guardar Como";
             this.btnGuardarComo.UseVisualStyleBackColor = true;
+            this.btnGuardarComo.Click += new System.EventHandler(this.btnGuardarComo_Click);
             // 
             // Form1
             // 

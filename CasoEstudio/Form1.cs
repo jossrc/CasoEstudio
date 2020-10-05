@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using CasoEstudio.Clases;
 
@@ -252,6 +253,22 @@ namespace CasoEstudio
                         break;
                 }
             }
+        }
+
+        void guardarComo(String text) {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Archivo de texto |*.txt";
+
+            if (save.ShowDialog() == DialogResult.OK) {
+                String ruta = save.FileName;
+                FileStream archivo = new FileStream(ruta, FileMode.Create);
+                StreamWriter escritor = new StreamWriter(archivo);
+                escritor.Write(text);
+
+                escritor.Close();
+                archivo.Close();
+            }
+
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -560,6 +577,56 @@ namespace CasoEstudio
                 MessageBox.Show("Selecciona un tipo");
             }
  
+        }
+
+        private void btnGuardarComo_Click(object sender, EventArgs e)
+        {
+            int indicePublicacion;
+
+            if (i != -1 && dgPublicaciones.Rows.Count > 0 && publicaciones.Count > 0)
+            {
+                (string titulo, string autor, int añoEdicion, string estado) = ObtenerValoresCeldas(i);
+
+                Publicacion publicacion = publicaciones.Find(publ => publ.Autor == autor && publ.Titulo == titulo && publ.AñoEdicion == añoEdicion && publ.Estado == estado);
+                indicePublicacion = publicaciones.IndexOf(publicacion);
+
+                int tipo = cboTipo.SelectedIndex;
+
+                switch (tipo)
+                {
+                    case 0:
+                        Libro libro = (Libro) publicacion;
+                        string infoLibro = libro.obtenerInfo("Libro");
+                        guardarComo(infoLibro);
+                        break;
+                    case 1:
+                        Enciclopedia enciclopedia = (Enciclopedia) publicacion;
+                        string infoEnci = enciclopedia.obtenerInfo("Enciclopedia");
+                        guardarComo(infoEnci);
+                        break;
+                    case 2:
+                        Revista revista = (Revista) publicacion;
+                        string infoRev = revista.obtenerInfo("Revista");
+                        guardarComo(infoRev);
+                        break;
+                    case 3:
+                        BestSeller bestSeller = (BestSeller) publicacion;
+                        string infoBest = publicacion.obtenerInfo("BestSeller");
+                        guardarComo(infoBest);
+                        break;
+                    default:
+                        MessageBox.Show("Oops sucedió un problema");
+                        return;
+                }
+
+                i = -1;
+                Limpiar();
+                MessageBox.Show("Guardado correctamente", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Busque y seleccione un registro para guardar");
+            }
         }
     }
 }

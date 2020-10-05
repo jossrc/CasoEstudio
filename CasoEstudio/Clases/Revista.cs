@@ -13,5 +13,10 @@ namespace CasoEstudio.Clases
         {
 
         }
+
+        public override string obtenerInfo(string tipo)
+        {
+            return base.obtenerInfo(tipo);
+        }
     }
 }

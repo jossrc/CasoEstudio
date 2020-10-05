@@ -17,5 +17,11 @@ namespace CasoEstudio.Clases
         }
 
         public string Descripcion { get => descripcion; set => descripcion = value; }
+
+        public override string obtenerInfo(string tipo)
+        {
+            return base.obtenerInfo(tipo) + ";\n" +
+                   "Descripción: " + descripcion;
+        }
     }
 }
